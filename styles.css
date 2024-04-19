@@ -6,3 +6,32 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+.info-cards-main-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.info-cards-main-card {
+    max-width: 50%;
+    background-color: red;
+    margin-bottom: 10px; /* Margin between items */
+    box-sizing: border-box; /* Include padding in width calculation */
+    padding: 20px;
+    text-align: center;
+}
+
+.info-cards-sub-card {
+    background-color: wheat;
+    border: 1px solid red;
+    border-radius: .25em;
+    padding: .5em;
+}
+
+.info-cards-main-card h1 h2 h3 h4 h5 h6 p {
+    overflow-wrap: break-word;
+}
+
+.info-cards-sub-card h1 h2 h3 h4 h5 h6 p {
+    overflow-wrap: break-word;
+}
