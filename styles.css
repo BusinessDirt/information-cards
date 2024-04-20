@@ -1,11 +1,14 @@
-/*
+:root {
+    /* Base Pen Colors */
+    --background-color: #1e1e1e;
+    --pen-color: #f7f7f7;
+    --button-color-active: #252525;
+    --button-color-hover: #454545;
+    --button-color: #353535;
+    --border-color: #212121;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
 
-If your plugin does not need CSS, delete this file.
-
-*/
 .info-cards-main-div {
     display: flex;
     flex-wrap: wrap;
@@ -22,8 +25,9 @@ If your plugin does not need CSS, delete this file.
 }
 
 .info-cards-sub-card {
-    background-color: wheat;
-    border: 1px solid red;
+    background-color: var(--background-color);
+    color: var(--pen-color);
+    border: 1px solid var(--border-color);
     border-radius: .25em;
     padding: .5em;
 }
@@ -34,4 +38,58 @@ If your plugin does not need CSS, delete this file.
 
 .info-cards-sub-card h1 h2 h3 h4 h5 h6 p {
     overflow-wrap: break-word;
+}
+
+/* Style the tab */
+.recipe-tabs {
+    margin-top: .25em;
+    overflow: hidden;
+    background-color: transparent;
+}
+  
+/* Style the buttons that are used to open the tab content */
+.recipe-tabs button {
+    background-color: var(--button-color);
+    border-radius: 10px 10px 0px 0px;
+    float: left;
+    border: none !important;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+  
+/* Change background color of buttons on hover */
+.recipe-tabs button:hover {
+    background-color: var(--button-color-hover);
+}
+  
+/* Create an active/current tablink class */
+.recipe-tabs button.active {
+    background-color: var(--button-color-active);
+    font-weight: 900;
+    text-decoration: underline;
+}
+  
+/* Style the tab content */
+.recipe-tabs-content {
+    display: none;
+    padding: 6px 12px;
+    border-radius: 0px 10px 10px 10px;
+    border-top: none;
+    background-image: linear-gradient(to bottom, var(--button-color-active), var(--background-color));
+}
+
+.recipe-tabs-content>ul {
+    width: 100%;
+}
+
+.recipe-tabs-content>ul>li {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.recipe-tabs-content>ul>li>p {
+    width: 50%;
+    margin: 0em .5em 0em .5em;
 }

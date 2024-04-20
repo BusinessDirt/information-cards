@@ -1,4 +1,5 @@
 import { Notice } from "obsidian";
+import { json } from "stream/consumers";
 
 export function isKey<T extends object>(x: T, k: PropertyKey): k is keyof T {
     return k in x;
@@ -61,4 +62,29 @@ function createHeading(level: number, text: string, el: HTMLElement) {
 
 function createParagraph(text: string, el: HTMLElement) {
     el.createEl("p", { text: text })
+}
+
+export function recipeTabClickHandler(divClassName: string, buttonClassName: string, id: string, evt: MouseEvent) {
+    // Get all elements with the divClassName and hide them
+    let tabcontent = document.getElementsByClassName(divClassName);
+    for (let i = 0; i < tabcontent.length; i++) {
+        let content: HTMLElement = tabcontent[i] as HTMLElement;
+        content.style.display = "none";
+    }
+
+    // Get all elements with the buttonClassName and remove the class "active"
+    let tabButtons = document.getElementsByClassName(buttonClassName);
+    for (let i = 0; i < tabButtons.length; i++) tabButtons[i].classList.remove("active");
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    const divElement: HTMLElement | null = document.getElementById(id);
+    if (divElement != null) {
+        divElement.style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+}
+
+export function getStringValue(jsonObject: object, key: string): string {
+    const keyTyped = key as keyof typeof jsonObject;
+    return jsonObject[keyTyped];
 }
